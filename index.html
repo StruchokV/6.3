@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форми. Завдання для самостійного виконання</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .question {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .options {
+            margin-bottom: 20px;
+        }
+        .options input {
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="question">Запитання: Що можна пити?</div>
+        <div class="options">
+            <label><input type="radio" name="answer" value="1">Воду </label><br>
+            <label><input type="radio" name="answer" value="0">Автомобільне масло</label><br>
+            <label><input type="radio" name="answer" value="2">Бетон</label>
+        </div>
+        <button onclick="checkAnswer()">Перевірка рішення</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function checkAnswer() {
+            const options = document.getElementsByName('answer');
+            let selectedValue;
+            for (const option of options) {
+                if (option.checked) {
+                    selectedValue = option.value;
+                    break;
+                }
+            }
+
+            const resultDiv = document.getElementById('result');
+            if (selectedValue == 1 ) {
+                resultDiv.textContent = 'Правильно!';
+                resultDiv.style.color = 'green';
+            } else {
+                resultDiv.textContent = 'Неправильно, спробуйте ще раз.';
+                resultDiv.style.color = 'red';
+            }
+        }
+    </script>
+</body>
+</html>
